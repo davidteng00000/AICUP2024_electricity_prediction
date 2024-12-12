@@ -45,6 +45,18 @@ The architecture includes:
 * Hidden Layers: Two LSTM layers followed by two fully connected layers with ReLU and residual connections.
 * Output: Solar panel power generation for each time unit.
 
+
+The following describes the architecture of the best-performing model:
+```
+Cwb2LocModel(
+  (lstm): LSTM(7, 128, num_layers=2, batch_first=True, dropout=0.15, bidirectional=True)
+  (fc1): Linear(in_features=256, out_features=32, bias=True)
+  (fc2): Linear(in_features=32, out_features=7, bias=True)
+  (fc3): Linear(in_features=7, out_features=1, bias=True)
+  (criterion): L1Loss()
+)
+```
+
 ## Training Methodology
 ### Preprocessing
 * Data Interpolation:
@@ -68,24 +80,6 @@ The architecture includes:
 * Experiment with alternative models like XGBoost or diffusion models.
 * Incorporate additional features like air pollution indices.
 * Leverage pre-training on external datasets to enhance feature representation.
-
-# Usage
-## Environment Setup
-**Installation Steps**
-1. Clone the repository:
-```
-git clone https://github.com/davidteng00000/AICUP2024_electricity_prediction.git
-cd AICUP2024_electricity_prediction
-```
-2. (optional) Set up a virtual environment (using venv for example):
-```
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-```
-3. Install dependencies:
-```
-pip install -r requirements.txt
-```
 
 ## Contact
 * Author: Po-Yuan Teng
