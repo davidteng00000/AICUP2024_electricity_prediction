@@ -3,8 +3,8 @@
 This project is developed for the [AICUP2024 Electricity Generation Forecasting Competition](https://tbrain.trendmicro.com.tw/Competitions/Details/36). The objective is to predict electricity generation from solar panels based on microclimate data and weather station inputs. Our approach leverages LSTM-based sequential models to process time-series data effectively.
 
 ## Competition Overview
-Competition Name: AICUP 2024 - Electricity Generation Forecasting
-Leaderboard Score: 537581.4
+Competition Name: AICUP 2024 - Electricity Generation Forecasting  
+Leaderboard Score: 537581.4  
 **Rank: 16 / 934 (Top 1.7%)**
 
 The competition aims to utilize microclimate data to predict solar panel power output at various locations.
@@ -16,32 +16,19 @@ AICUP2024_electricity_prediction/
 ├── 36_TrainingData/                  # Primary training datasets
 ├── 36_TrainingData_Additional_V2/   # Additional datasets
 ├── cwbdata/                          # External data from Central Weather Bureau (CWB)
-├── code/                            # Code for training and predicting
-├── models/                           # Model 
-├── scalar/                           # Scalers for normalization
+├── code/                             # Code for training and predicting
+├── models/                           # Model checkpoints
+├── scalar/                           # Scalers for normalization, used during both training and prediction
 ├── submits/                          # Submission files
-├── requirements.txt                  # Dependency requirements
-├── README.md                         # Project documentation
-└── notebooks/                        # Jupyter notebooks for training and evaluation
-
+├── requirements.txt                  # List of dependencies
+└── README.md                         # Project documentation
 ```
 
-## Environment Setup
-**Installation Steps**
-1. Clone the repository:
-```
-git clone https://github.com/davidteng00000/AICUP2024_electricity_prediction.git
-cd AICUP2024_electricity_prediction
-```
-2. (optional) Set up a virtual environment (using venv for example):
-```
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-```
-3. Install dependencies:
-```
-pip install -r requirements.txt
-```
+### relationship between folders explained
+* During training, the main Jupyter Notebook file (cwb2loc___.ipynb) is located in the `code/` folder. This notebook is responsible for data preprocessing, training, and merging datasets. During the training process, scalar files are generated to record the parameters for data normalization, and model checkpoints are saved to preserve the best-performing models. These files are stored in the `scalar/` and `models/` folders, respectively.
+* For generating the submission files, another Jupyter Notebook (predict___.ipynb) in the `code/` folder is used. This notebook reads the saved models and scalars, applies the normalization, and outputs the submission file.
+
+# Method
 ## Data Description
 1. Primary Data:
     * Meteorological data from the Central Weather Bureau, including temperature, rainfall, sunshine duration, and UV index.
@@ -82,7 +69,25 @@ The architecture includes:
 * Incorporate additional features like air pollution indices.
 * Leverage pre-training on external datasets to enhance feature representation.
 
+# Usage
+## Environment Setup
+**Installation Steps**
+1. Clone the repository:
+```
+git clone https://github.com/davidteng00000/AICUP2024_electricity_prediction.git
+cd AICUP2024_electricity_prediction
+```
+2. (optional) Set up a virtual environment (using venv for example):
+```
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+```
+3. Install dependencies:
+```
+pip install -r requirements.txt
+```
+
 ## Contact
 * Author: Po-Yuan Teng
-* Email: davidteng@g.ncu.edu.tw
+* Email: davidteng@g.ncu.edu.tw  
 For detailed questions, refer to the competition report and code repository.
